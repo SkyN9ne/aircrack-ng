@@ -18,6 +18,7 @@
 ### GitHub CI
 
 [![Linux CI](https://github.com/aircrack-ng/aircrack-ng/actions/workflows/linux.yml/badge.svg?event=push)](https://github.com/aircrack-ng/aircrack-ng/actions/workflows/linux.yml)
+[![Linux PCRE CI](https://github.com/aircrack-ng/aircrack-ng/actions/workflows/linux-pcre.yml/badge.svg?event=push)](https://github.com/aircrack-ng/aircrack-ng/actions/workflows/linux-pcre.yml)
 [![macOS CI](https://github.com/aircrack-ng/aircrack-ng/actions/workflows/macos.yml/badge.svg?event=push)](https://github.com/aircrack-ng/aircrack-ng/actions/workflows/macos.yml)
 [![Windows CI](https://github.com/aircrack-ng/aircrack-ng/actions/workflows/windows.yml/badge.svg?event=push)](https://github.com/aircrack-ng/aircrack-ng/actions/workflows/windows.yml)
 
@@ -190,6 +191,28 @@ is as follows:
 
     pacman -Sy autoconf automake-wrapper libtool msys2-w32api-headers msys2-w32api-runtime gcc pkg-config git python openssl-devel openssl libopenssl msys2-runtime-devel gcc binutils make pcre2-devel libsqlite-devel
 
+## Docker containers
+
+We have two repositories on DockerHub:
+- [aircrackng/release](https://hub.docker.com/r/aircrackng/release): Each release
+- [aircrackng/git](https://hub.docker.com/r/aircrackng/git): every commit in the git repository
+
+Base command for the `git` version:
+
+`sudo docker run --rm -it aircrackng/git`
+
+Available platforms/CPU architectures:
+- linux/386 (base image: debian:unstable-slim)
+- linux/amd64 (base image: debian:unstable-slim)
+- linux/arm/v5 (base image: debian:unstable-slim)
+- linux/arm/v6 (base image: alpine:3)
+- linux/arm/v7 (base image: debian:unstable-slim)
+- linux/arm64/v8 (base image: debian:unstable-slim)
+- linux/mips64le (base image: debian:unstable-slim)
+- linux/ppc64le (base image: debian:unstable-slim)
+- linux/riscv64 (base image: debian:unstable-slim)
+- linux/s390x (base image: debian:unstable-slim)
+
 ## Compiling
 
 To build `aircrack-ng`, the Autotools build system is utilized. Autotools replaces
@@ -260,13 +283,13 @@ to your choosing:
                    Note: Each script has its own dependencies.
 
 * **with-gcrypt**:   Use libgcrypt crypto library instead of the default OpenSSL.
-                And also use internal fast sha1 implementation (borrowed from GIT)
+                And also use internal fast sha1 implementation (borrowed from GIT).
                 Dependency (Debian): libgcrypt20-dev
 
-* **with-duma**:	Compile with DUMA support. DUMA is a library to detect buffer overruns and under-runs.
-            	Dependencies (debian): duma
+* **with-duma**:	Compile with DUMA support. DUMA is a library to detect buffer overruns and underruns.
+            	Dependency (Debian): duma
 
-* **disable-libnl**:  Set-up the project to be compiled without libnl (1 or 3). Linux option only.
+* **disable-libnl**:  Set up the project to be compiled without libnl (1 or 3). Linux option only.
 
 * **without-opt**:  Do not enable stack protector (on GCC 4.9 and above).
 
@@ -356,7 +379,7 @@ to your choosing:
     from Homebrew.
 
     If you wish to use OpenSSL from Homebrew, you may need to specify the location
-    to its' installation. To figure out where OpenSSL lives, run:
+    to its installation. To figure out where OpenSSL lives, run:
 
     `brew --prefix openssl`
 
@@ -466,9 +489,9 @@ the additional flag `--without-opt` to the `./configure` line:
 
 ## Linux/BSD
 
-Aircrack-ng is available in most distributions repositories. However, it is not always up to date.
+Aircrack-ng is available in most distributions repositories. However, it is not always up-to-date.
 
-We provide up to date versions via PackageCloud for a number of Linux distributions:
+We provide up-to-date versions via PackageCloud for a number of Linux distributions:
 
 - development (each commit in this repo): https://packagecloud.io/aircrack-ng/git
 - stable releases: https://packagecloud.io/aircrack-ng/release
@@ -482,6 +505,7 @@ We provide up to date versions via PackageCloud for a number of Linux distributi
 # Continuous integration
 
 - Linux CI (GitHub actions): https://github.com/aircrack-ng/aircrack-ng/actions/workflows/linux.yml
+- Linux PCRE CI (GitHub actions): https://github.com/aircrack-ng/aircrack-ng/actions/workflows/linux-pcre.yml
 - Windows CI (Github actions): https://github.com/aircrack-ng/aircrack-ng/actions/workflows/windows.yml
 - macOS CI (GitHub actions): https://github.com/aircrack-ng/aircrack-ng/actions/workflows/macos.yml
 - Code style and consistency (GitHub actions): https://github.com/aircrack-ng/aircrack-ng/actions/workflows/style.yml
@@ -512,7 +536,7 @@ Some more information is present in the [README](README) file.
 
 Documentation, tutorials, ... can be found on https://aircrack-ng.org
 
-Support is available in the [forum](https://forum.aircrack-ng.org) and on IRC (in #aircrack-ng on Libera Chat).
+Support is available in the [GitHub Discussions](https://github.com/aircrack-ng/aircrack-ng/discussions) and on IRC (in #aircrack-ng on Libera Chat).
 
 Every tool has its own manpage. For aircrack-ng, `man aircrack-ng`
 
