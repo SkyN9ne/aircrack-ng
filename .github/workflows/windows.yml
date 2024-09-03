@@ -317,13 +317,13 @@ jobs:
           Write-Host "::set-output name=unix_path::${unix_path}"
 
       - name: Download Cygwin 64-bit artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: 64bit
           path: 64bit
 
       - name: Download GUI artifacts
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v4.1.7
         with:
           name: gui
           path: gui
